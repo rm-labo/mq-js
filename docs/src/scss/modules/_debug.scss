@@ -1,0 +1,60 @@
+.debug-bar {
+  position: fixed;
+  z-index: 1000;
+  bottom: 1em;
+  left: 1em;
+  right: 1em;
+  padding: 1em 1em;
+  background: $color-text;
+  color: $color-bg;
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 300;
+  box-shadow: 20px 20px 35px 0px rgba($color-text, 0.5);
+
+  span {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .text {
+    letter-spacing: 0.05em;
+  }
+
+  .number {
+    font-size: 2.0rem;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+  }
+
+}
+
+.debug-box-wrap {
+  margin: 1em 0 0 0;
+  padding: 2em;
+  text-align: center;
+  background: rgba($color-text, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box {
+  margin: auto;
+  font-size: 1.2rem;
+  width: 130px;
+  height: 130px;
+  background: $color-text;
+  border-radius: 1em;
+  text-align: center;
+  box-shadow: 20px 20px 35px 0px rgba($color-text, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  span {
+    display: inline-block;
+    color: white;
+  }
+
+}

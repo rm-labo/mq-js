@@ -1,0 +1,56 @@
+.main-section {
+  width: 100%;
+  padding: 6em 1em 7em;
+  text-align: center;
+  color: $color-main-section-text;
+  background: $color-main-section-bg;
+  
+
+  &__title {
+    font-weight: 100;
+    font-size: 8rem;
+    margin: 0 0 40px;
+  }
+
+  &__text {
+    margin: 1em;
+    font-size: 1.4rem;
+    margin-top: 1em;
+  }
+
+  &__btn {
+    position: relative;
+    z-index: 10;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    display: inline-block;
+    padding: 0.8em 1.5em;
+    border: 2px solid currentColor;
+    font-size: 1.6rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: currentColor;
+    text-decoration: none;
+    
+    span {
+      vertical-align: middle;
+    }
+
+    small {
+      font-weight: 300;
+      font-size: 1.6rem;
+    }
+
+    i,
+    svg {
+      padding-right: 0.2em;
+      font-size: 2em;
+    }
+
+    &:hover {
+      color: $color-bg;
+      background-color: rgba($color-text, 1);
+      border: 2px solid rgba($color-text, 1);
+    }
+  }
+}

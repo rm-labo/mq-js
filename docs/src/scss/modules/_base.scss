@@ -1,0 +1,23 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  color: $color-text;
+  line-height: 1.7;
+  background: $color-bg;
+}
+body {
+  font-size: 1.6rem;
+  font-family: 'Lato', sans-serif;
+}
+
+:link    { color: $color-text; text-decoration: underline;}
+a:visited { color: $color-text; text-decoration: underline;}
+a:hover   { color: $color-text; text-decoration: none;}
+a:focus   { color: $color-text; text-decoration: none;}
+a:active  { color: $color-text; }
+

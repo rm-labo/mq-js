@@ -1,0 +1,54 @@
+{
+  "name": "docs",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "link": "cd ../ && npm link && cd ./docs && npm link @rm-labo/mq-js",
+    "build": "npm run lintfix && NODE_ENV=production webpack --mode production && npm run clean:map",
+    "dev": "NODE_ENV=development webpack --watch --mode development",
+    "clean:map": "rimraf ./dist/**/*.map",
+    "lint": "eslint --ignore-path .eslintignore .",
+    "lintfix": "eslint --fix --ignore-path .eslintignore .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "rm-labo",
+  "license": "MIT",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.14.0",
+    "@types/highlightjs": "^9.12.0",
+    "highlight.js": "^10.1.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.1",
+    "@babel/preset-env": "^7.11.0",
+    "autoprefixer": "^9.8.6",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.1.0",
+    "babel-preset-env": "^1.7.0",
+    "core-js": "^3.6.5",
+    "css-declaration-sorter": "^5.1.2",
+    "css-loader": "^4.2.1",
+    "css-mqpacker": "^7.0.0",
+    "eslint": "^7.7.0",
+    "mini-css-extract-plugin": "^0.10.0",
+    "node-sass": "^4.14.1",
+    "postcss-loader": "^3.0.0",
+    "rimraf": "^3.0.2",
+    "sass-loader": "^9.0.3",
+    "sass-resources-loader": "^2.1.0",
+    "style-loader": "^1.2.1",
+    "ts-loader": "^8.0.2",
+    "typescript": "^3.9.7",
+    "url-loader": "^4.1.0",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-fix-style-only-entries": "^0.5.1"
+  },
+  "browserslist": [
+    "last 1 version",
+    "> 1%",
+    "IE 11"
+  ]
+}

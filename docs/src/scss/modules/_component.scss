@@ -1,0 +1,94 @@
+.section {
+  width: 100%;
+  padding-top: 3em;
+  padding-bottom: 3em;
+  text-align: center;
+
+  &__title {
+    font-size: 6rem;
+    font-weight: 100;
+    margin-bottom: 1em;
+  }
+
+  &__text {
+    font-size: 1.6rem;
+    margin-top: 2em;
+    margin-bottom: 1.5em;
+    line-height: 1.8;
+  }
+
+  pre {
+    text-align: left;
+    line-height: 1.6;
+
+    code.hljs {
+      background: $color-text;
+      font-size: 1.1rem;
+      padding: 1.5em 1.5em;
+      font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono,
+        Courier New, monospace, serif;
+    }
+  }
+
+  p code,
+  table code {
+    padding: 0.1em 0.2em;
+    border-radius: 2px;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: rgba(0,0,0,0.1);
+  }
+}
+
+.sub-section {
+  &__title {
+    margin-top: 2em;
+    font-size: 2rem;
+    margin: 1em;
+  }
+}
+
+.table-basic {
+  $table-border: $color-text;
+  margin: 1em 0;
+  width: 100%;
+  font-size: 1.4rem;
+  text-align: center;
+  // border-left: 1px solid $table-border;
+  border-top: 1px solid $table-border;
+  text-align: left;
+
+  tr {
+    th {
+      // border-right: 1px solid $table-border;
+      border-bottom: 1px solid $table-border;
+      padding: 0.5em 1em;
+      vertical-align: middle;
+    }
+    td {
+      // border-right: 1px solid $table-border;
+      border-bottom: 1px solid $table-border;
+      padding: 0.5em 1em;
+      vertical-align: middle;
+    }
+  }
+  thead {
+    tr {
+      background-color: rgba($color-text, 1);
+      color: $color-bg;
+      th {
+      }
+      td {
+      }
+    }
+  }
+  tbody {
+    tr {
+      background-color: rgba($color-bg, 0.5);
+      th {
+        background-color: rgba($color-text, 0.08);
+      }
+      td {
+      }
+    }
+  }
+}

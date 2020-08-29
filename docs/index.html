@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="./dist/css/main.css" />
+    <title>mq-js</title>
+  </head>
+  <body>
+    <div class="debug-bar">
+      <span class="text">window [ width : </span>
+      <span class="number" data-debug-window-width></span>
+      <span class="text"> px / height : </span>
+      <span class="number" data-debug-window-height></span>
+      <span class="text"> px ] </span>
+    </div>
+
+    <section class="main-section">
+      <h1 class="main-section__title">mq-js</h1>
+      <p class="main-section__text">Media Queries Helper Functions for javascript.</p>
+      <a class="main-section__btn" href="https://www.npmjs.com/package/@rm-labo/mq-js" target="_blank">
+        <span><i class="fab fa-npm"></i></span>
+        <span>
+          <small>GETTING STARTED</small>
+        </span>
+      </a>
+
+      <p class="main-section__text">The latest source code is available on <a href="https://github.com/rm-labo/mq-js">GitHub</a>.</p>
+    </section>  
+
+    <section class="section">
+      <div class="wrapper">
+        <p class="section__text">
+          Scss version of the package with a similar concept is <a href="https://github.com/rm-labo/mq-scss">here</a>
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section__title">Install</h2>
+      <div class="wrapper">
+<pre><code class="language-bash">$ npm i -D @rm-labo/mq-js</code></pre>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section__title">Usage</h2>
+      <div class="wrapper">
+
+        <p class="section__text">basic usage</p>
+        <pre><code class="language-javascript">import Mq from '@rm-labo/mq-js'
+
+const mq = new Mq()
+
+mq.up( bpKeyName1, matchHandler [, unmatchHandler ])
+mq.down( bpKeyName1, matchHandler [, unmatchHandler ])
+mq.between( bpKeyName1, bpKeyName2, matchHandler [, unmatchHandler ])
+</code></pre>
+
+
+        <table class="table-basic">
+          <thead>
+            <tr>
+              <th>arguments</th>
+              <th>type</th>
+              <th>required</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>bpKeyName1</th>
+              <td><code>string</code></td>
+              <td><code>true</code></td>
+            </tr>
+            <tr>
+              <th>bpKeyName2</th>
+              <td><code>string</code></td>
+              <td><code>true</code></td>
+            </tr>
+            <tr>
+              <th>matchHandler</th>
+              <td><code>Function</code></td>
+              <td><code>true</code></td>
+            </tr>
+            <tr>
+              <th>unmatchHandler</th>
+              <td><code>Function</code></td>
+              <td><code>false</code></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p class="section__text">Set the argument to <code>option.breakpoints</code> property.<br>
+          Example of a single breakpoint specification.</p>
+        <pre><code class="language-javascript">const mq = new Mq()
+
+// The second and third (optional) arguments can be used to describe the process 
+// that occurs when a condition is met or deviated from.
+mq.up(
+  'sm', 
+  () => { /* Fires in 600px and up */ },
+  () => { /* Fires in 599px and down */ }
+)
+
+// You can also use method chains to write explicitly
+mq
+  .down('md', () => { /* Fires in 899px and down */ })
+  .up('md', () => { /* Fires in 900px and up */ })
+
+// You can also specify a specific range.
+mq
+  .between(
+    'md', 
+    'lg', 
+    () => { /* Fires in 900 ~ 1199px */ },
+    () => { /* Fires in ~ 899px and 1200px ~ */ })
+
+// Example with all ranges
+mq
+  .down('sm', () => { /* Fires in 599px and down */ })
+  .between('sm', 'md', () => { /* Fires in 600 ~ 899px */ })
+  .between('md', 'lg', () => { /* Fires in 900 ~ 1199px */ })
+  .between('lg', 'xl', () => { /* Fires in 1200 ~ 1799px */ })
+  .up('xl', () => { /* Fires in 1800px ~ */ })
+</code></pre>
+
+
+<p class="section__text">For the height</p>
+<pre><code class="language-javascript">const mq = new Mq()
+
+// The second and third (optional) arguments can be used to describe the process 
+// that occurs when a condition is met or deviated from.
+mq.heightUp(
+  'sm', 
+  () => { /* Fires in 600px and up */ },
+  () => { /* Fires in 599px and down */ }
+)
+
+// You can also use method chains to write explicitly
+mq
+  .heightDown('md', () => { /* Fires in 899px and down */ })
+  .heightUp('md', () => { /* Fires in 900px and up */ })
+
+// You can also specify a specific range.
+mq
+  .heightBetween(
+    'md', 
+    'lg', 
+    () => { /* Fires in 900 ~ 1199px */ },
+    () => { /* Fires in ~ 899px and 1200px ~ */ })
+
+// Example with all ranges
+mq
+  .heightDown('sm', () => { /* Fires in 599px and down */ })
+  .heightBetween('sm', 'md', () => { /* Fires in 600 ~ 899px */ })
+  .heightBetween('md', 'lg', () => { /* Fires in 900 ~ 1199px */ })
+  .heightBetween('lg', 'xl', () => { /* Fires in 1200 ~ 1799px */ })
+  .heightUp('xl', () => { /* Fires in 1800px ~ */ })
+</code></pre>
+
+<p class="section__text">It is also possible to specify the <code>width</code> if you want to use it together with the <code>height</code>.
+</p>
+<pre><code class="language-javascript">const mq = new Mq()
+
+mq.widthUp() // = mq.up()
+mq.widthDown() // = mq.down()
+mq.widthBetween() // = mq.between()
+
+// Example of a single breakpoint
+ma
+  .widthUp('md', () => {}, () => {})
+  .heightUp('md', () => {}, () => {})
+
+// Example with all ranges
+mq
+  .widthDown('sm', () => { /* Fires in w = 599px and down */ })
+  .widthBetween('sm', 'md', () => { /* Fires in w = 600 ~ 899px */ })
+  .widthBetween('md', 'lg', () => { /* Fires in w = 900 ~ 1199px */ })
+  .widthBetween('lg', 'xl', () => { /* Fires in w = 1200 ~ 1799px */ })
+  .widthUp('xl', () => { /* Fires in w = 1800px ~ */ })
+  .heightDown('sm', () => { /* Fires in h = 599px and down */ })
+  .heightBetween('sm', 'md', () => { /* Fires in h = 600 ~ 899px */ })
+  .heightBetween('md', 'lg', () => { /* Fires in h = 900 ~ 1199px */ })
+  .heightBetween('lg', 'xl', () => { /* Fires in h = 1200 ~ 1799px */ })
+  .heightUp('xl', () => { /* Fires in h = 1800px ~ */ }) 
+</code></pre>
+
+
+        <section class="sub-section">
+          <h3 class="sub-section__title">default setting values</h3>
+          <pre><code class="language-javascript">{
+  breakpoints: {
+    sm: 600,
+    md: 900,
+    lg: 1200,
+    xl: 1800,
+  }
+}
+</code></pre>
+        </section>
+
+        <section class="sub-section">
+          <h3 class="sub-section__title">override default setting values</h3>
+          <p class="section__text">
+            You can overwrite option.<br>
+            Define all of the breakpoints and name combinations you want to use in your project.
+          </p>
+          <pre><code class="language-javascript">// override example
+const option = {
+  breakpoints: {
+    'micro' : 320,
+    'small' : 620,
+    'medium' : 840,
+    'large' : 1280,
+    'extra' : 1900,
+    // .. Add as many as you like ..
+  }
+}
+
+const mq = new Mq(option)
+
+// usage example
+mq
+  .down('micro', () => { /* Fires in 319px and down */ },)
+  .between('micro', 'small', () => { /* Fires in 320 ~ 619px */ },)
+  .between('small', 'medium', () => { /* Fires in 620 ~ 839px */ },)
+  .between('medium', 'large', () => { /* Fires in 840 ~ 1279px */ },)
+  .between('large', 'extra', () => { /* Fires in 1280 ~ 1899px */ },)
+  .up('extra', () => { /* Fires in 1900px and up */ },)
+
+</code></pre>
+        </section>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section__title">Examples</h2>
+      <div class="wrapper">
+        <section class="sub-section">
+
+          <div class="debug-box-wrap">
+            <div class="box" id="box-mq-up"><span>#box-mq-up</span></div>
+            <div class="box" id="box-mq-down"><span>#box-mq-down</span></div>
+          </div>
+          <pre><code class="language-typescript">const mq = new Mq()
+
+function boxStyle(target: HTMLDivElement, color: string) {
+  return () => target.style.backgroundColor = color
+}
+
+// The second and third (optional) arguments 
+// can be used to describe the process that occurs 
+// when a condition is met or deviated from.
+const boxMqUp = document.getElementById('box-mq-up')
+mq.up(
+  'sm', 
+  boxStyle(boxMqUp, 'red'),
+  boxStyle(boxMqUp, 'blue')
+)
+
+// You can also use method chains to write explicitly
+const boxMqDown = document.getElementById('box-mq-down')
+mq
+  .down('md', boxStyle(boxMqDown, 'red'))
+  .up('md', boxStyle(boxMqDown, 'blue'))
+</code></pre>
+
+<div class="debug-box-wrap">
+  <div class="box" id="box-mq-between"><span>#box-mq-between</span></div>
+  <div class="box" id="box-mq-all-range"><span>#box-mq-all-range</span></div>
+</div>
+<pre><code class="language-typescript">const mq = new Mq()
+
+// You can also specify a specific range.
+const boxMqBetween = document.getElementById('box-mq-between')
+mq
+  .between(
+      'md', 
+      'lg', 
+      boxStyle(boxMqBetween, 'red'),
+      boxStyle(boxMqBetween, 'blue')
+    )
+
+// Example with all ranges
+const boxMqAllRange = document.getElementById('box-mq-all-range')
+mq
+  .widthDown('sm', boxStyle(boxMqAllRange, 'red'))
+  .widthBetween('sm', 'md', boxStyle(boxMqAllRange, 'orange'))
+  .widthBetween('md', 'lg', boxStyle(boxMqAllRange, 'green'))
+  .widthBetween('lg', 'xl', boxStyle(boxMqAllRange, 'blue'))
+  .widthUp('xl', boxStyle(boxMqAllRange, 'purple'))
+</code></pre>
+
+
+          <p class="section__text">height example</p>
+
+          <div class="debug-box-wrap">
+            <div class="box" id="box-mq-height-up"><span>#box-mq-height-up</span></div>
+            <div class="box" id="box-mq-height-down"><span>#box-mq-height-down</span></div>
+          </div>
+          <pre><code class="language-typescript">const mq = new Mq()
+
+function boxStyle(target: HTMLDivElement, color: string) {
+  return () => target.style.backgroundColor = color
+}
+
+// The second and third (optional) arguments 
+// can be used to describe the process that occurs 
+// when a condition is met or deviated from.
+const boxMqHeightUp = document.getElementById('box-mq-height-up')
+mq.heightUp(
+    'sm', 
+    boxStyle(boxMqHeightUp, 'red'), 
+    boxStyle(boxMqHeightUp, 'blue')
+  )
+
+// You can also use method chains to write explicitly
+const boxMqHeightDown = document.getElementById('box-mq-height-down')
+mq
+  .heightDown('md', boxStyle(boxMqHeightDown, 'red'))
+  .heightUp('md', boxStyle(boxMqHeightDown, 'blue'))
+</code></pre>
+
+          <div class="debug-box-wrap">
+          <div class="box" id="box-mq-height-between"><span>#box-mq-height-between</span></div>
+          <div class="box" id="box-mq-height-all-range"><span>#box-mq-height-all-range</span></div>
+          </div>
+          <pre><code class="language-typescript">const mq = new Mq()
+
+// You can also specify a specific range.
+const boxMqHeightBetween = document.getElementById('box-mq-height-between')
+mq
+  .heightBetween(
+      'md', 
+      'lg', 
+      boxStyle(boxMqHeightBetween, 'red'),
+      boxStyle(boxMqHeightBetween, 'blue')
+    )
+
+// Example with all ranges
+const boxMqHeightAllRange = document.getElementById('box-mq-height-all-range')
+mq
+  .heightDown('sm', boxStyle(boxMqHeightAllRange, 'red'))
+  .heightBetween('sm', 'md', boxStyle(boxMqHeightAllRange, 'orange'))
+  .heightBetween('md', 'lg', boxStyle(boxMqHeightAllRange, 'green'))
+  .heightBetween('lg', 'xl', boxStyle(boxMqHeightAllRange, 'blue'))
+  .heightUp('xl', boxStyle(boxMqHeightAllRange, 'purple'))
+</code></pre>
+
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section__title">Licence</h2>
+      <div class="wrapper">
+        <p class="section__text">
+          Licensed under MIT license.<br />
+          You are free to use for your personal or commercial projects.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section__title">Release notes</h2>
+      <div class="wrapper">
+        <table class="table-basic">
+          <thead>
+            <tr>
+              <th style="width:30%;">version</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>ver 1.0.0</th>
+              <td>launch</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <small>made by <a href="https://rm-labo.com/" target="_blank">@rm-labo</a></small>
+    </footer>
+
+    <script type="text/javascript" src="./dist/js/index.js"></script>
+  </body>
+</html>
